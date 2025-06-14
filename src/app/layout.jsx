@@ -23,7 +23,7 @@ export const metadata = {
   title: "Holistic Yog Foundation",
   description: "Discover the path to holistic wellness through yoga",
   icons: {
-    icon: '/images/Logos/Logo With Title.jpg',
+    icon: '/images/Logos/Logo.png',
   },
 };
 
@@ -31,9 +31,9 @@ export default function RootLayout({
   children,
 }) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${poppins.variable}`}>
-      <head>
-        <link rel="icon" href="/images/Logos/Logo With Title.jpg" />
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${poppins.variable}`}>      
+    <head>
+        <link rel="icon" href="/images/Logos/Logo.png" />
       </head>
       <body className="bg-white">
         <SectionProvider>
