@@ -23,6 +23,22 @@ const lifetimeMembers = [
     qualification:'B.A., M.A., B.P.Ed, M.P.Ed, Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/MohammadkaleemAliRizvi.pdf',
   },
+  {
+    id: '3',
+    name: 'Dr. Sameer Ambre',
+    membershipNumber: 'HYF/LM/003',
+    image: '/images/lifetime-members/DrSameerAmbre.jpg',
+    qualification:'B.A., B.P.Ed, M.P.Ed, Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrSameerAmbre.pdf',
+  },
+  {
+    id: '4',
+    name: 'Dr. Munish Pandey',
+    membershipNumber: 'HYF/LM/004',
+    image: '/images/lifetime-members/DrMunishPandey.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrMunishPandey.pdf',
+  },
   // Add more lifetime members as needed
 ];
 
