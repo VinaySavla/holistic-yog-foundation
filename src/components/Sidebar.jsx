@@ -10,6 +10,7 @@ import {
   IdentificationIcon,
   DocumentTextIcon, 
   PhotoIcon,
+  HeartIcon,
 } from '@heroicons/react/24/outline';
 
 const menuItems = [
@@ -20,6 +21,7 @@ const menuItems = [
   { name: 'Conferences', href: '/conferences', icon: UserCircleIcon },
   // { name: 'Competitions', href: '/', icon: TrophyIcon },
   { name: 'Membership', href: '/membershipform', icon: CalendarIcon },
+  { name: 'Donation', href: '/donation', icon: HeartIcon },
   { name: 'Articles', href: '/articles', icon: DocumentTextIcon },
   { name: 'Gallery', href: '/gallery', icon: PhotoIcon },
   // { name: 'Volunteers', href: '/volunteers', icon: UserIcon },

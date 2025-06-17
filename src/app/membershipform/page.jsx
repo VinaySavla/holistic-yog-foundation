@@ -628,20 +628,20 @@ export default function MembershipFormPage() {
                       </div>
                     </h4>
                     <div className="space-y-3 text-gray-700">
-                      <p className="font-medium">Holistic YOG Foundation</p>
+                      <p className="font-medium">Holistic YOG Foundation</p>                      
                       <div className="bg-white p-4 rounded-lg border border-gray-200">
-                        <div className="grid grid-cols-2 gap-2 text-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                           <span className="text-gray-500">Account No.:</span>
-                          <span className="font-mono text-sm">120100000190911</span>
+                          <span className="font-mono text-sm break-all">120100000190911</span>
                           
                           <span className="text-gray-500">IFSC:</span>
-                          <span className="font-mono">TJSB0000058</span>
+                          <span className="font-mono break-all">TJSB0000058</span>
                           
                           <span className="text-gray-500">MICR Code:</span>
-                          <span className="font-mono">400109030</span>
+                          <span className="font-mono break-all">400109030</span>
                           
                           <span className="text-gray-500">Bank Name:</span>
-                          <span className="font-mono">TJSB SAHAKARI BANK LTD</span>
+                          <span className="font-mono break-all">TJSB SAHAKARI BANK LTD</span>
                         </div>
                       </div>
                     </div>
