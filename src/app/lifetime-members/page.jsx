@@ -37,6 +37,14 @@ const LifeTimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrMunishPandey.pdf',
   },
+  {
+    id: '5',
+    name: 'Sucharitha Shetty Karelia',
+    membershipNumber: 'HYF/LM/005',
+    image: '/images/lifetime-members/SucharithaShettyKarelia.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/SucharithaShettyKarelia.pdf',
+  },
 ];
 
 const LifeTimeMemberCard = ({ member }) => {
