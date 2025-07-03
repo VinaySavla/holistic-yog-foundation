@@ -12,7 +12,7 @@ const lifetimeMembers = [
     name: 'Dr. Rohini Shetty',
     membershipNumber: 'HYF/LM/001',
     qualification:'B.Com, B.P.Ed, NSNIS (Kabaddi), M.P.Ed, Ph.D. (Physical Education)',
-    image: '/images/Committee-members/DrRohiniShetty.jpg',
+    image: '/images/lifetime-members/DrRohiniShetty.jpg',
     achievementsPdf: '/pdfs/DrRohiniShetty.pdf',
   },
   {
