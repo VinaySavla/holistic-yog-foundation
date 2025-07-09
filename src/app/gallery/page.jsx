@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon, PlayIcon } from '@heroicons/react/24/outline';
 
@@ -69,32 +69,97 @@ const galleryEvents = [
 const GalleryPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [autoPlayInterval, setAutoPlayInterval] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const openEventGallery = (event) => {
     setSelectedEvent(event);
     setCurrentMediaIndex(0);
+    setProgress(0);
+    setIsTransitioning(false);
   };
 
   const closeEventGallery = () => {
     setSelectedEvent(null);
     setCurrentMediaIndex(0);
+    setProgress(0);
+    setIsTransitioning(false);
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      setAutoPlayInterval(null);
+    }
   };
 
   const nextMedia = () => {
-    if (selectedEvent && currentMediaIndex < selectedEvent.media.length - 1) {
-      setCurrentMediaIndex(currentMediaIndex + 1);
+    if (selectedEvent && !isTransitioning) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentMediaIndex((prevIndex) => 
+          prevIndex === selectedEvent.media.length - 1 ? 0 : prevIndex + 1
+        );
+        setProgress(0);
+        setIsTransitioning(false);
+      }, 150);
     }
   };
 
   const prevMedia = () => {
-    if (currentMediaIndex > 0) {
-      setCurrentMediaIndex(currentMediaIndex - 1);
+    if (selectedEvent && !isTransitioning) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentMediaIndex((prevIndex) => 
+          prevIndex === 0 ? selectedEvent.media.length - 1 : prevIndex - 1
+        );
+        setProgress(0);
+        setIsTransitioning(false);
+      }, 150);
     }
   };
 
   const goToMedia = (index) => {
-    setCurrentMediaIndex(index);
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentMediaIndex(index);
+        setProgress(0);
+        setIsTransitioning(false);
+      }, 150);
+    }
   };
+
+  // Auto-scroll functionality with progress
+  useEffect(() => {
+    if (selectedEvent && !isTransitioning) {
+      const progressInterval = setInterval(() => {
+        setProgress((prevProgress) => {
+          if (prevProgress >= 100) {
+            nextMedia();
+            return 0;
+          }
+          return prevProgress + (100 / 40); // 40 steps over 4 seconds
+        });
+      }, 100); // Update every 100ms
+      
+      setAutoPlayInterval(progressInterval);
+      
+      return () => {
+        clearInterval(progressInterval);
+      };
+    } else if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      setAutoPlayInterval(null);
+    }
+  }, [selectedEvent, currentMediaIndex, isTransitioning]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#FDF8F3] py-12 px-4 sm:px-6 lg:px-8">
@@ -150,69 +215,109 @@ const GalleryPage = () => {
 
         {/* Modal for Event Gallery */}
         {selectedEvent && (
-          <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 backdrop-blur-md bg-black/30 flex items-center justify-center p-4">
             <div className="relative w-full max-w-6xl mx-auto">
               {/* Header */}
               <div className="flex justify-between items-center mb-4 text-white">
                 <div>
-                  <h2 className="text-2xl font-bold">{selectedEvent.title}</h2>
+                  <h2 className="text-2xl font-bold drop-shadow-lg">{selectedEvent.title}</h2>
                 </div>
                 <button 
                   onClick={closeEventGallery}
-                  className="p-2 hover:bg-white/20 rounded-full transition-colors"
+                  className="p-2 hover:bg-white/20 rounded-full transition-colors backdrop-blur-sm"
                 >
                   <XMarkIcon className="w-6 h-6" />
                 </button>
               </div>
 
               {/* Main Media Display */}
-              <div className="relative bg-black rounded-lg overflow-hidden mb-4" style={{ height: '60vh' }}>
-                {selectedEvent.media[currentMediaIndex] && (
-                  <>
-                    {selectedEvent.media[currentMediaIndex].type === 'image' ? (
-                      <Image
-                        src={selectedEvent.media[currentMediaIndex].src}
-                        alt={selectedEvent.media[currentMediaIndex].alt}
-                        fill
-                        className="object-contain"
-                        sizes="90vw"
-                      />
-                    ) : (
-                      <div className="relative w-full h-full flex items-center justify-center">
-                        <video
-                          src={selectedEvent.media[currentMediaIndex].src}
-                          controls
-                          className="max-w-full max-h-full"
+              <div 
+                className="relative bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden mb-4 border border-white/20" 
+                style={{ height: '60vh' }}
+              >
+                {/* Slideshow Container */}
+                <div className="relative w-full h-full">
+                  {selectedEvent.media.map((media, index) => (
+                    <div
+                      key={media.id}
+                      className={`absolute inset-0 transition-all duration-500 ease-in-out ${
+                        index === currentMediaIndex
+                          ? 'opacity-100 scale-100 translate-x-0'
+                          : index < currentMediaIndex
+                          ? 'opacity-0 scale-95 -translate-x-full'
+                          : 'opacity-0 scale-95 translate-x-full'
+                      }`}
+                    >
+                      {media.type === 'image' ? (
+                        <Image
+                          src={media.src}
+                          alt={media.alt}
+                          fill
+                          className="object-contain"
+                          sizes="90vw"
+                          priority={index === currentMediaIndex}
                         />
-                      </div>
-                    )}
-
-                    {/* Navigation Arrows */}
-                    {selectedEvent.media.length > 1 && (
-                      <>
-                        <button 
-                          onClick={prevMedia}
-                          disabled={currentMediaIndex === 0}
-                          className="absolute left-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          <ChevronLeftIcon className="w-6 h-6" />
-                        </button>
-                        <button 
-                          onClick={nextMedia}
-                          disabled={currentMediaIndex === selectedEvent.media.length - 1}
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 p-2 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                          <ChevronRightIcon className="w-6 h-6" />
-                        </button>
-                      </>
-                    )}
-
-                    {/* Media Counter */}
-                    <div className="absolute bottom-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                      {currentMediaIndex + 1} / {selectedEvent.media.length}
+                      ) : (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <video
+                            src={media.src}
+                            controls
+                            className="max-w-full max-h-full"
+                          />
+                        </div>
+                      )}
                     </div>
+                  ))}
+                </div>
+
+                {/* Navigation Arrows */}
+                {selectedEvent.media.length > 1 && (
+                  <>
+                    <button 
+                      onClick={prevMedia}
+                      disabled={isTransitioning}
+                      className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:bg-white/30 transition-all duration-300 border border-white/20 disabled:opacity-50 z-10"
+                    >
+                      <ChevronLeftIcon className="w-6 h-6" />
+                    </button>
+                    <button 
+                      onClick={nextMedia}
+                      disabled={isTransitioning}
+                      className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/20 backdrop-blur-sm text-white rounded-full hover:bg-white/30 transition-all duration-300 border border-white/20 disabled:opacity-50 z-10"
+                    >
+                      <ChevronRightIcon className="w-6 h-6" />
+                    </button>
                   </>
                 )}
+
+                {/* Media Counter with Progress */}
+                <div className="absolute bottom-4 left-4 z-10">
+                  <div className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm border border-white/20 mb-2">
+                    {currentMediaIndex + 1} / {selectedEvent.media.length}
+                  </div>
+                  <div className="w-32 bg-white/20 rounded-full h-1 overflow-hidden">
+                    <div 
+                      className="bg-orange-400 h-1 transition-all duration-100 ease-linear" 
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Slide Indicators */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                  {selectedEvent.media.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToMedia(index)}
+                      disabled={isTransitioning}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentMediaIndex
+                          ? 'bg-orange-400 scale-125'
+                          : 'bg-white/40 hover:bg-white/60'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
 
               {/* Thumbnail Navigation */}
@@ -221,10 +326,10 @@ const GalleryPage = () => {
                   <div
                     key={media.id}
                     onClick={() => goToMedia(index)}
-                    className={`relative flex-shrink-0 w-20 h-20 cursor-pointer rounded-lg overflow-hidden border-2 transition-all ${
+                    className={`relative flex-shrink-0 w-20 h-20 cursor-pointer rounded-lg overflow-hidden border-2 transition-all backdrop-blur-sm ${
                       index === currentMediaIndex 
-                        ? 'border-orange-500 scale-105' 
-                        : 'border-gray-300 hover:border-orange-300'
+                        ? 'border-orange-400 scale-105 shadow-lg' 
+                        : 'border-white/30 hover:border-orange-300'
                     }`}
                   >
                     {media.type === 'image' ? (
@@ -236,12 +341,12 @@ const GalleryPage = () => {
                         sizes="80px"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <div className="w-full h-full bg-gray-800/50 backdrop-blur-sm flex items-center justify-center">
                         <PlayIcon className="w-8 h-8 text-white" />
                       </div>
                     )}
                     {media.type === 'video' && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm">
                         <PlayIcon className="w-6 h-6 text-white" />
                       </div>
                     )}
