@@ -52,12 +52,12 @@ const Sidebar = ({ isOpen, onClose, onMouseEnter, onMouseLeave }) => {
     }}
       >
       <nav className="h-full flex flex-col">
-      <ul className="flex-1 overflow-y-auto py-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] touch-pan-y">
-      {menuItems.map((item) => (
+      <ul className="flex-1 overflow-y-auto py-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] touch-pan-y">          {menuItems.map((item) => (
             <li key={item.name}>
               <Link
                 href={item.href}
                 className="flex items-center px-5 py-2 text-white hover:bg-[#474343] transition-colors rounded-md"
+                onClick={onClose}
               >
                 <div className="w-8 h-8 flex items-center justify-center">
                   <item.icon className="w-6 h-6" />
