@@ -1,53 +1,108 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 // This would normally come from an API or data fetch
 const articles = [
-  {
-    id: 1,
-    title: 'Yoga in Managing Sciatica',
-    date: 'Friday, May 15, 2024',
-    readTime: '10 min read',
-    pdfUrl: '/pdfs/Articles/Yoga in Managing Sciatica.pdf',
-    excerpt: 'Explore how yoga can effectively help in managing and relieving sciatica pain through targeted postures and breathing techniques.',
-  },
-  {
-    id: 2,
-    title: 'Yoga for Cervical Health',
-    date: 'Wednesday, April 30, 2024',
-    readTime: '8 min read',
-    pdfUrl: '/pdfs/Articles/cervical.pdf',
-    excerpt: 'Discover gentle yoga practices specifically designed to improve cervical spine health and reduce neck pain.',
-  },
-  {
-    id: 3,
-    title: 'Holistic Approach to Yoga - Dr. Balwant Singh',
-    date: 'Monday, June 3, 2024',
-    readTime: '12 min read',
-    pdfUrl: '/pdfs/Articles/Dr. Balwant Singh HYF.pdf',
-    excerpt: 'Insights from Dr. Balwant Singh on integrating traditional yoga practices with modern therapeutic approaches for holistic well-being.'
-  },
-  {
-    id: 4,
-    title: 'Therapeutic Yoga Insights - Dr. Nilesh Bansode',
-    date: 'Friday, May 24, 2024',
-    readTime: '15 min read',
-    pdfUrl: '/pdfs/Articles/Dr. Nilesh Bansode HYF.pdf',
-    excerpt: 'Dr. Nilesh Bansode shares expert knowledge on therapeutic applications of yoga for various health conditions.'
-  }
+    {
+        id: 1,
+        title: 'Integrating AI and Yogic Sciences: A Data-Driven Approach to Well-Being',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/1.pdf',
+        excerpt: 'An exploration of how artificial intelligence can be combined with yogic sciences to promote data-driven well-being.'
+    },
+    {
+        id: 2,
+        title: 'AI and Big Data in Yogic Sciences: Transforming Technology for Holistic Well-being',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/2.pdf',
+        excerpt: 'Examines the role of AI and big data in enhancing yogic practices and their impact on holistic health.'
+    },
+    {
+        id: 3,
+        title: 'Integrating Yoga into Peace Education: A Pathway to Reconciliation and Social Cohesion in Sri Lanka',
+        author: 'Dr. Sivanesan Sabaananth (Sri Lanka)',
+        pdfUrl: '/pdfs/Articles/3.pdf',
+        excerpt: 'Discusses yoga as a transformative tool for reconciliation and peace education in post-conflict Sri Lanka.'
+    },
+    {
+        id: 4,
+        title: 'The Role of Yoga in Managing Sciatica',
+        author: 'Dr. Rashmita Sabat (India)',
+        pdfUrl: '/pdfs/Articles/4.pdf',
+        excerpt: 'Explores how yoga can help manage sciatica pain through specific poses and therapeutic breathing.'
+    },
+    {
+        id: 5,
+        title: 'Managing Cervical Spondylitis with Naturopathy and Yogic Practices',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/5.pdf',
+        excerpt: 'Blends yogic postures and naturopathic remedies for effective management of cervical spondylitis.'
+    },
+    {
+        id: 6,
+        title: 'The Impact of Sattvic Diet on Students: An Indian Perspective',
+        author: 'Dr. Yadnyeshwar Bagrao (India)',
+        pdfUrl: '/pdfs/Articles/6.pdf',
+        excerpt: 'Highlights how sattvic dietary principles affect students’ health, behavior, and academic performance.'
+    },
+    {
+        id: 7,
+        title: 'The Modern Face of Meditation in Vietnam',
+        author: 'Ms. Ho Thi Thanh Minh (Vietnam)',
+        pdfUrl: '/pdfs/Articles/7.pdf',
+        excerpt: 'Looks into contemporary meditation practices and their cultural evolution in Vietnam.'
+    },
+    {
+        id: 8,
+        title: 'Yogic Approaches to Reduce Examination Stress in School Children',
+        author: 'Dr. Suchita Dhamale (India)',
+        pdfUrl: '/pdfs/Articles/8.pdf',
+        excerpt: 'Presents yoga-based interventions to help students manage academic stress and anxiety.'
+    },
+    {
+        id: 9,
+        title: 'Yoga and Meditation in Mauritius: Tradition, Transformation, and Trends',
+        author: 'Ms. Rajdevi Dhurn Reejane (Mauritius)',
+        pdfUrl: '/pdfs/Articles/9.pdf',
+        excerpt: 'Explores the evolving landscape of yoga and meditation practices in Mauritius.'
+    },
+    {
+        id: 10,
+        title: 'How to Stay Healthy in the Monsoon Season the Ayurvedic Way',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/10.pdf',
+        excerpt: 'Ayurvedic guidelines for maintaining health and immunity during the monsoon season.'
+    },
+    {
+        id: 11,
+        title: 'Yoga for Resilience and Vitality during the Monsoon',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/11.pdf',
+        excerpt: 'Discusses yoga practices that build immunity, strength, and mental clarity during monsoon.'
+    },
+    {
+        id: 12,
+        title: 'Yoga and Nonviolence: Gandhian Values in Contemporary Peace Education for Indian Youth',
+        author: 'Dr. Deepak Singh Patial (India)',
+        pdfUrl: '/pdfs/Articles/12.pdf',
+        excerpt: 'Analyzes the relevance of Gandhian philosophy and yoga in today’s peace education landscape.'
+    }
 ];
 
 export default function ArticlePage({ params }) {
   const router = useRouter();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
+  
+  // Unwrap the params Promise using React.use()
+  const unwrappedParams = use(params);
 
   useEffect(() => {
-    // In a real app, you would fetch the article data here based on params.id
-    const foundArticle = articles.find(article => article.id === parseInt(params.id));
+    // In a real app, you would fetch the article data here based on unwrappedParams.id
+    const foundArticle = articles.find(article => article.id === parseInt(unwrappedParams.id));
     if (foundArticle) {
       setArticle(foundArticle);
     } else {
@@ -55,7 +110,7 @@ export default function ArticlePage({ params }) {
       router.push('/articles');
     }
     setLoading(false);
-  }, [params.id, router]);
+  }, [unwrappedParams.id, router]);
 
   if (loading) {
     return (

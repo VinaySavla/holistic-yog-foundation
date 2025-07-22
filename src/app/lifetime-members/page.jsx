@@ -45,6 +45,22 @@ const LifeTimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/SucharithaShettyKarelia.pdf',
   },
+  {
+    id: '6',
+    name: 'Dr. Bhushan Laxman Bhate',
+    membershipNumber: 'HYF/LM/006',
+    image: '/images/lifetime-members/DrBhushanLaxmanBhate.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrBhushanLaxmanBhate.pdf',
+  },
+  {
+    id: '7',
+    name: 'Dr. Deepak Singh Patial',
+    membershipNumber: 'HYF/LM/007',
+    image: '/images/lifetime-members/DrDeepakSinghPatial.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrDeepakSinghPatial.pdf',
+  },
 ];
 
 const LifeTimeMemberCard = ({ member }) => {

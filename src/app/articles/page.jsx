@@ -7,35 +7,92 @@ import Image from 'next/image';
 export default function ArticlesPage() {
     // Articles data using the available PDFs
     const articles = [
-        {
-            id: 1,
-            title: 'Yoga in Managing Sciatica',
-            readTime: '10 min read',
-            pdfUrl: '/pdfs/Articles/Yoga in Managing Sciatica.pdf',
-            excerpt: 'Explore how yoga can effectively help in managing and relieving sciatica pain through targeted postures and breathing techniques.'
-        },
-        {
-            id: 2,
-            title: 'Yoga for Cervical Health',
-            readTime: '8 min read',
-            pdfUrl: '/pdfs/Articles/cervical.pdf',
-            excerpt: 'Discover gentle yoga practices specifically designed to improve cervical spine health and reduce neck pain.'
-        },
-        {
-            id: 3,
-            title: 'Holistic Approach to Yoga - Dr. Balwant Singh',
-            readTime: '12 min read',
-            pdfUrl: '/pdfs/Articles/Dr. Balwant Singh HYF.pdf',
-            excerpt: 'Insights from Dr. Balwant Singh on integrating traditional yoga practices with modern therapeutic approaches for holistic well-being.'
-        },
-        {
-            id: 4,
-            title: 'Therapeutic Yoga Insights - Dr. Nilesh Bansode',
-            readTime: '15 min read',
-            pdfUrl: '/pdfs/Articles/Dr. Nilesh Bansode HYF.pdf',
-            excerpt: 'Dr. Nilesh Bansode shares expert knowledge on therapeutic applications of yoga for various health conditions.'
-        }
-    ];
+    {
+        id: 1,
+        title: 'Integrating AI and Yogic Sciences: A Data-Driven Approach to Well-Being',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/1.pdf',
+        excerpt: 'An exploration of how artificial intelligence can be combined with yogic sciences to promote data-driven well-being.'
+    },
+    {
+        id: 2,
+        title: 'AI and Big Data in Yogic Sciences: Transforming Technology for Holistic Well-being',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/2.pdf',
+        excerpt: 'Examines the role of AI and big data in enhancing yogic practices and their impact on holistic health.'
+    },
+    {
+        id: 3,
+        title: 'Integrating Yoga into Peace Education: A Pathway to Reconciliation and Social Cohesion in Sri Lanka',
+        author: 'Dr. Sivanesan Sabaananth (Sri Lanka)',
+        pdfUrl: '/pdfs/Articles/3.pdf',
+        excerpt: 'Discusses yoga as a transformative tool for reconciliation and peace education in post-conflict Sri Lanka.'
+    },
+    {
+        id: 4,
+        title: 'The Role of Yoga in Managing Sciatica',
+        author: 'Dr. Rashmita Sabat (India)',
+        pdfUrl: '/pdfs/Articles/4.pdf',
+        excerpt: 'Explores how yoga can help manage sciatica pain through specific poses and therapeutic breathing.'
+    },
+    {
+        id: 5,
+        title: 'Managing Cervical Spondylitis with Naturopathy and Yogic Practices',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/5.pdf',
+        excerpt: 'Blends yogic postures and naturopathic remedies for effective management of cervical spondylitis.'
+    },
+    {
+        id: 6,
+        title: 'The Impact of Sattvic Diet on Students: An Indian Perspective',
+        author: 'Dr. Yadnyeshwar Bagrao (India)',
+        pdfUrl: '/pdfs/Articles/6.pdf',
+        excerpt: 'Highlights how sattvic dietary principles affect students’ health, behavior, and academic performance.'
+    },
+    {
+        id: 7,
+        title: 'The Modern Face of Meditation in Vietnam',
+        author: 'Ms. Ho Thi Thanh Minh (Vietnam)',
+        pdfUrl: '/pdfs/Articles/7.pdf',
+        excerpt: 'Looks into contemporary meditation practices and their cultural evolution in Vietnam.'
+    },
+    {
+        id: 8,
+        title: 'Yogic Approaches to Reduce Examination Stress in School Children',
+        author: 'Dr. Suchita Dhamale (India)',
+        pdfUrl: '/pdfs/Articles/8.pdf',
+        excerpt: 'Presents yoga-based interventions to help students manage academic stress and anxiety.'
+    },
+    {
+        id: 9,
+        title: 'Yoga and Meditation in Mauritius: Tradition, Transformation, and Trends',
+        author: 'Ms. Rajdevi Dhurn Reejane (Mauritius)',
+        pdfUrl: '/pdfs/Articles/9.pdf',
+        excerpt: 'Explores the evolving landscape of yoga and meditation practices in Mauritius.'
+    },
+    {
+        id: 10,
+        title: 'How to Stay Healthy in the Monsoon Season the Ayurvedic Way',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/10.pdf',
+        excerpt: 'Ayurvedic guidelines for maintaining health and immunity during the monsoon season.'
+    },
+    {
+        id: 11,
+        title: 'Yoga for Resilience and Vitality during the Monsoon',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/11.pdf',
+        excerpt: 'Discusses yoga practices that build immunity, strength, and mental clarity during monsoon.'
+    },
+    {
+        id: 12,
+        title: 'Yoga and Nonviolence: Gandhian Values in Contemporary Peace Education for Indian Youth',
+        author: 'Dr. Deepak Singh Patial (India)',
+        pdfUrl: '/pdfs/Articles/12.pdf',
+        excerpt: 'Analyzes the relevance of Gandhian philosophy and yoga in today’s peace education landscape.'
+    }
+];
+
 
     return (
         <div className="min-h-screen bg-white">
@@ -51,47 +108,66 @@ export default function ArticlesPage() {
 
             {/* Main Content */}
             <main className="bg-[#FFF3E2] container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {articles.map((article) => (
-                        <Link
-                            href={`/articles/${article.id}`}
-                            key={article.id}
-                            className="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full border border-gray-100 hover:border-blue-50 transform hover:-translate-y-1 bg-white"
-                        >
-                            <div className="p-6 flex flex-col justify-between h-full">
-                                <div>
-                                    <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                                        {article.title}
-                                    </h2>
-                                    <p className="text-gray-500 text-sm mb-4">
-                                        {article.readTime}
-                                    </p>
-                                    <p className="text-gray-600">
-                                        {article.excerpt}
-                                    </p>
-                                </div>
-                                <div className="mt-6 flex items-center text-blue-600 text-sm font-medium">
-                                    Read Article
-                                    <svg
-                                        className="w-4 h-4 ml-1"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                        xmlns="http://www.w3.org/2000/svg"
+                <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div className="overflow-x-auto">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="bg-gray-100 border-b border-gray-200">
+                                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-800 w-20">
+                                        Sr. No.
+                                    </th>
+                                    <th className="px-6 py-4 text-center text-sm font-semibold text-gray-800">
+                                        Topic and Author's Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {articles.map((article, index) => (
+                                    <tr 
+                                        key={article.id}
+                                        className="border-b border-gray-100 hover:bg-blue-50 transition-colors duration-200"
                                     >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M9 5l7 7-7 7"
-                                        />
-                                    </svg>
-                                </div>
-                            </div>
-                        </Link>
-                    ))}
+                                        <td className="px-6 py-6 text-center w-20">
+                                            <span className="inline-flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full">
+                                                {index + 1}
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-6">
+                                            <Link
+                                                href={`/articles/${article.id}`}
+                                                className="block group"
+                                            >
+                                                <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-200 mb-2">
+                                                    {article.title}
+                                                </h3>
+                                                <p className="text-gray-600 text-sm leading-relaxed mb-2">
+                                                    {article.author}
+                                                </p>
+                                                <div className="flex items-center text-blue-600 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                                    Read Full Article
+                                                    <svg
+                                                        className="w-4 h-4 ml-1"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M9 5l7 7-7 7"
+                                                        />
+                                                    </svg>
+                                                </div>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-
             </main>
         </div>
     );
