@@ -63,6 +63,14 @@ const lifetimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrDeepakSinghPatial.pdf',
   },
+  {
+    id: '8',
+    name: 'Dr. Shweta Singh',
+    membershipNumber: 'HYF/LM/008',
+    image: '/images/lifetime-members/DrShwetaSingh.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrShwetaSingh.pdf',
+  },
   // Add more lifetime members as needed
 ];
 
