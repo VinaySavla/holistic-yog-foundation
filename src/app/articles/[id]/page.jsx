@@ -89,6 +89,13 @@ const articles = [
         author: 'Dr. Deepak Singh Patial (India)',
         pdfUrl: '/pdfs/Articles/12.pdf',
         excerpt: 'Analyzes the relevance of Gandhian philosophy and yoga in today’s peace education landscape.'
+    },
+    {
+        id: 13,
+        title: 'Yoga in School and University Curricula: Nurturing Holistic Education for a Balanced Future',
+        author: 'Dr. Sanjaykumar Pal (India)',
+        pdfUrl: '/pdfs/Articles/13.pdf',
+        excerpt: 'Analyzes the relevance of Gandhian philosophy and yoga in today’s peace education landscape.'
     }
 ];
 

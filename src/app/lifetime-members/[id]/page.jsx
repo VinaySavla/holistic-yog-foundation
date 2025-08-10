@@ -71,6 +71,14 @@ const lifetimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrShwetaSingh.pdf',
   },
+  {
+    id: '9',
+    name: 'Dr. Sanjaykumar Pal',
+    membershipNumber: 'HYF/LM/009',
+    image: '/images/lifetime-members/DrSanjayKumarPal.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrSanjayKumarPal.pdf',
+  },
   // Add more lifetime members as needed
 ];
 
