@@ -77,6 +77,14 @@ const LifeTimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrSanjayKumarPal.pdf',
   },
+  {
+    id: '10',
+    name: 'Dr. Sushma Maurya',
+    membershipNumber: 'HYF/LM/010',
+    image: '/images/lifetime-members/DrSushmaMaurya.jpg',
+    qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrSushmaMaurya.pdf',
+  },
 ];
 
 const LifeTimeMemberCard = ({ member }) => {
