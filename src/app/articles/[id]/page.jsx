@@ -96,7 +96,14 @@ const articles = [
         author: 'Dr. Sanjaykumar Pal (India)',
         pdfUrl: '/pdfs/Articles/13.pdf',
         excerpt: 'Analyzes the relevance of Gandhian philosophy and yoga in today’s peace education landscape.'
-    }
+    },
+    {
+        id: 14,
+        title: 'Women and Yoga: Empowerment through Spiritual Practices',
+        author: 'Dr. Sushama Maurya (India)',
+        pdfUrl: '/pdfs/Articles/14.pdf',
+        excerpt: 'Explores the role of yoga in empowering women through spiritual practices and self-awareness.'
+    },
 ];
 
 export default function ArticlePage({ params }) {
