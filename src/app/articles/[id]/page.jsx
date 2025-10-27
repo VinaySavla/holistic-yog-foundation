@@ -104,6 +104,41 @@ const articles = [
         pdfUrl: '/pdfs/Articles/14.pdf',
         excerpt: 'Explores the role of yoga in empowering women through spiritual practices and self-awareness.'
     },
+    {
+        id: 15,
+        title: 'Thiền Buddhism as a Cultural Identity',
+        author: 'Ms. Ho Thi Thanh Minh (Vietnam)',
+        pdfUrl: '/pdfs/Articles/15.pdf',
+        excerpt: 'Examines the role of Thiền Buddhism in shaping cultural identity and spiritual practices in contemporary society.'
+    },
+    {
+        id: 16,
+        title: 'Inclusion of Yoga and Mindfulness Practices in the Mauritian School Curriculum',
+        author: 'Ms. Rajdevi Dhurn Reejane (Mauritius)',
+        pdfUrl: '/pdfs/Articles/16.pdf',
+        excerpt: 'Explores the integration of yoga and mindfulness practices into the educational framework of Mauritius.'
+    },
+    {
+        id: 17,
+        title: 'Overview of Contemporary Trends and the Meditation Landscape in Vietnam',
+        author: 'Mr. Nguyen Xuan Hien (Vietnam)',
+        pdfUrl: '/pdfs/Articles/17.pdf',
+        excerpt: 'Examines the current trends and practices in meditation within the Vietnamese context.'
+    },
+    {
+        id: 18,
+        title: 'Ecological Consciousness in Yogic Philosophy',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/18.pdf',
+        excerpt: 'Explores the ecological dimensions of yogic philosophy and its relevance in contemporary environmental discourse.'
+    },
+    {
+        id: 19,
+        title: 'Comparative Study of Yogic Practices and Modern Psychotherapy in Juvenile Rehabilitation',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/19.pdf',
+        excerpt: 'A comparative analysis of yogic practices and contemporary psychotherapy in juvenile rehabilitation, assessing their effects on behavior, emotional regulation, and social reintegration.'
+    },
 ];
 
 export default function ArticlePage({ params }) {
@@ -175,7 +210,7 @@ export default function ArticlePage({ params }) {
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-xl font-semibold text-gray-800">{article.title}</h2>
             <p className="text-sm text-gray-500 mt-1">
-              {article.date} • {article.readTime}
+              {article.date}  {article.readTime}
             </p>
           </div>
 
