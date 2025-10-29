@@ -139,6 +139,13 @@ const articles = [
         pdfUrl: '/pdfs/Articles/19.pdf',
         excerpt: 'A comparative analysis of yogic practices and contemporary psychotherapy in juvenile rehabilitation, assessing their effects on behavior, emotional regulation, and social reintegration.'
     },
+    {
+        id: 20,
+        title: 'Wellness in Sri Lanka (Yoga, Meditation, Mindfulness, and Ayurveda)',
+        author: 'Dr.  Wajira Gunasena (Sri Lanka)',
+        pdfUrl: '/pdfs/Articles/20.pdf',
+        excerpt: 'A comprehensive overview of wellness practices in Sri Lanka, focusing on the integration of yoga, meditation, mindfulness, and Ayurveda for holistic health.'
+    },
 ];
 
 export default function ArticlePage({ params }) {
