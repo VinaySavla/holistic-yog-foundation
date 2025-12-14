@@ -147,6 +147,34 @@ export default function ArticlesPage() {
         pdfUrl: '/pdfs/Articles/20.pdf',
         excerpt: 'A comprehensive overview of wellness practices in Sri Lanka, focusing on the integration of yoga, meditation, mindfulness, and Ayurveda for holistic health.'
     },
+    {
+        id: 21,
+        title: 'Samadhi: A Scientific Temperament (A Yogic Perspective on the Science of Consciousness)',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/21.pdf',
+        excerpt: 'An exploration of the concept of Samadhi from a yogic perspective, examining its implications for understanding consciousness through a scientific lens.'
+    },
+    {
+        id: 22,
+        title: 'Meditation Culture and Its Modern Innovations in Vietnam',
+        author: 'Ms. Ho Thi Thanh Minh (Vietnam)',
+        pdfUrl: '/pdfs/Articles/22.pdf',
+        excerpt: 'An analysis of the evolution of meditation culture in Vietnam, highlighting modern innovations and adaptations in practice.'
+    },
+    {
+        id: 23,
+        title: 'Digital Consumption & Mental Tamas: Understanding Brain Fog through the Bhagavad Gita',
+        author: 'Dr. Suchita Dhamale (India)',
+        pdfUrl: '/pdfs/Articles/23.pdf',
+        excerpt: 'An exploration of the impact of digital consumption on mental clarity, using insights from the Bhagavad Gita to understand and address brain fog.'
+    },
+    {
+        id: 24,
+        title: 'How Meditation Reverses Brain Rot: A Neuroscientific and Yogic Perspective',
+        author: 'Dr. Balwant Singh (India)',
+        pdfUrl: '/pdfs/Articles/24.pdf',
+        excerpt: 'An analysis of how meditation can counteract cognitive decline, combining insights from neuroscience and yogic philosophy.'
+    },
 ];
 
 
