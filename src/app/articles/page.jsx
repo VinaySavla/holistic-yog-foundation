@@ -175,6 +175,20 @@ export default function ArticlesPage() {
         pdfUrl: '/pdfs/Articles/24.pdf',
         excerpt: 'An analysis of how meditation can counteract cognitive decline, combining insights from neuroscience and yogic philosophy.'
     },
+    {
+        id: 25,
+        title: 'When Society Changes, Sports Transform: Sri Lanka',
+        author: 'Dr. Sivanesan Sabaananth (Sri Lanka)',
+        pdfUrl: '/pdfs/Articles/25.pdf',
+        excerpt: 'An analysis of how meditation can counteract cognitive decline, combining insights from neuroscience and yogic philosophy.'
+    },
+    {
+        id: 26,
+        title: 'Physical Education and Sports in Mauritius: Present Scenario and Future Directions',
+        author: 'Ms. Rajdevi Dhurn Reejane (Mauritius)',
+        pdfUrl: '/pdfs/Articles/26.pdf',
+        excerpt: 'An overview of the current state of physical education and sports in Mauritius, along with recommendations for future development and improvement.'
+    },
 ];
 
 
