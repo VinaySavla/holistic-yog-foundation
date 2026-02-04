@@ -64,6 +64,24 @@ const galleryEvents = [
       { id: 38, src: '/images/gallery/national-conference/38.jpg', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
     ]
   },
+  {
+    id: 3,
+    title: '',
+    coverImage: "/images/gallery/event2/01.JPG",
+    media: [
+      { id: 1, src: '/images/gallery/event2/01.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 2, src: '/images/gallery/event2/02.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 3, src: '/images/gallery/event2/03.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 4, src: '/images/gallery/event2/04.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 5, src: '/images/gallery/event2/05.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 6, src: '/images/gallery/event2/06.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 7, src: '/images/gallery/event2/07.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 8, src: '/images/gallery/event2/08.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 9, src: '/images/gallery/event2/09.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 10, src: '/images/gallery/event2/10.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+      { id: 11, src: '/images/gallery/event2/11.JPG', alt: 'One Day National Conference on "Yoga, Sports, and Well-being: A Holistic Approach"', type: 'image' },
+    ]
+  },
 ];
 
 const GalleryPage = () => {
