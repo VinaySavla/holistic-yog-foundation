@@ -85,6 +85,22 @@ const LifeTimeMembers = [
     qualification:'B.Sc., M.Sc., Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrSushmaMaurya.pdf',
   },
+  {
+    id: '11',
+    name: 'Mr. Sushil Singh Paliwal',
+    membershipNumber: 'HYF/LM/011',
+    image: '/images/lifetime-members/SushilSinghPaliwal.jpg',
+    qualification:'B.Sc., M.Sc., M.A. (Education)',
+    achievementsPdf: '/pdfs/SushilSinghPaliwal.pdf',
+  },
+  {
+    id: '12',
+    name: 'Dr. Jitendra Mali',
+    membershipNumber: 'HYF/LM/012',
+    image: '/images/lifetime-members/DrJitendraMali.jpg',
+    qualification:'M.A., M.P.Ed, Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrJitendraMali.pdf',
+  },
 ];
 
 const LifeTimeMemberCard = ({ member }) => {
