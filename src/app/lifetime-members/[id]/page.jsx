@@ -103,6 +103,14 @@ const lifetimeMembers = [
     qualification:'M.A., M.P.Ed, Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrJitendraMali.pdf',
   },
+  {
+    id: '13',
+    name: 'Dr. Pratibha Dhake',
+    membershipNumber: 'HYF/LM/013',
+    image: '/images/lifetime-members/DrPratibhaDhake.jpg',
+    qualification:'M.A., M.P.Ed, Ph.D. (Physical Education)',
+    achievementsPdf: '/pdfs/DrPratibhaDhake.pdf',
+  },
   // Add more lifetime members as needed
 ];
 

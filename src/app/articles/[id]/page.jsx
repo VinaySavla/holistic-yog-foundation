@@ -188,6 +188,20 @@ const articles = [
         pdfUrl: '/pdfs/Articles/26.pdf',
         excerpt: 'An overview of the current state of physical education and sports in Mauritius, along with recommendations for future development and improvement.'
     },
+    {
+        id: 27,
+        title: 'Yogic Education as a Catalyst for Dynamic and Holistic Higher Education in Maharashtra',
+        author: 'Dr. Pratibha B Dhake (India)',
+        pdfUrl: '/pdfs/Articles/27.pdf',
+        excerpt: 'An exploration of how yogic principles can be integrated into higher education to create a more dynamic and holistic learning environment in Maharashtra.'
+    },
+    {
+        id: 28,
+        title: 'How Yoga Helps Young Mind in Indians School Education Systems ',
+        author: 'Mr. Sushil D. Paliwal (India)',
+        pdfUrl: '/pdfs/Articles/28.pdf',
+        excerpt: 'An analysis of the benefits of yoga for young minds within the Indian school education system, focusing on cognitive, emotional, and physical development.'
+    },
 ];
 
 export default function ArticlePage({ params }) {
