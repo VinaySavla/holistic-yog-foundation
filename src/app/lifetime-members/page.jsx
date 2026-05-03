@@ -109,6 +109,14 @@ const LifeTimeMembers = [
     qualification:'M.A., M.P.Ed, Ph.D. (Physical Education)',
     achievementsPdf: '/pdfs/DrPratibhaDhake.pdf',
   },
+  {
+    id: '14',
+    name: 'Dr. Anil Suresh Tiwari',
+    membershipNumber: 'HYF/LM/014',
+    image: '/images/lifetime-members/DrAnilSureshTiwari.jpeg',
+    qualification:'B.Com, M.Com, M.M.S, M.B.A., Diploma in Business Management, Ph.D. (Management)',
+    achievementsPdf: '/pdfs/DrAnilSureshTiwari.pdf',
+  },
 ];
 
 const LifeTimeMemberCard = ({ member }) => {
