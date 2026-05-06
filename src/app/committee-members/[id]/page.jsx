@@ -15,6 +15,15 @@ const committeeMembers = [
     achievementsPdf: '/pdfs/DrBalwantSingh.pdf',
   },
   {
+    id: '9',
+    name: 'Mr. Sushil Singh Paliwal',
+    designation: 'Acting President',
+    image: '/images/lifetime-members/SushilSinghPaliwal.jpg',
+    Qualification:'B.Sc., M.Sc., M.A. (Education)',
+    membershipNumber: 'HYF/LM/011',
+    achievementsPdf: '/pdfs/SushilSinghPaliwal.pdf',
+  },
+  {
     id: '2',
     name: 'Dr. Nilesh Bansode',
     designation: 'Vice President',
