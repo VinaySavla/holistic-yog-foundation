@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 import { 
   CalendarIcon, 
   ClockIcon, 
@@ -9,8 +8,6 @@ import {
   BoltIcon,
   MegaphoneIcon,
   XMarkIcon,
-  DocumentTextIcon,
-  ArrowRightIcon
 } from '@heroicons/react/24/outline';
 
 
@@ -23,51 +20,52 @@ const defaultEvent = {
   venue: "Holy Faith School, 90 Feet Road, Kachore, Kalyan East"
 };
 
+const bannerImages = [
+  {
+    src: "/images/conference/InternationalYogaDay2026.png",
+    alt: "International Day of Yoga 2026 banner",
+  },
+  {
+    src: "/images/conference/banner21jun20262.jpeg",
+    alt: "International Day of Yoga 2026 alternate banner",
+  },
+];
+
 const BannerSection = ({
   title = "Upcoming",
   subtitle = "Stay informed. Stay connected. Be a part of our next big gathering.",
   event = defaultEvent,
-  buttonText = "Register Now"
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveImageIndex((currentIndex) => (currentIndex + 1) % bannerImages.length);
+    }, 5000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <div className="bg-[#FDF7F2] rounded-lg p-8">
-      {/* PDF Viewer Modal */}
+      {/* Full-screen image viewer */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] flex flex-col">
-            <div className="flex justify-between items-center p-4 border-b">
-              <h3 className="text-black text-lg font-medium">Event Details</h3>
-              <button 
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <XMarkIcon className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-auto p-4">
-              <div className="w-full h-full">
-                <iframe
-                  src="/pdfs/Brochure_V10-1.pdf"
-                  className="w-full h-[80vh] border-0 rounded-lg"
-                  title="Event Details PDF"
-                >
-                  <p>Your browser does not support PDFs. Please download the PDF to view it: 
-                    <a href="/pdfs/Brochure_V10-1.pdf" className="text-blue-500 hover:underline">
-                      Download PDF
-                    </a>
-                  </p>
-                </iframe>
-              </div>
-            </div>
-            <div className="p-4 border-t flex justify-end items-center">
-              <button 
-                onClick={() => setIsModalOpen(false)}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-full transition-colors"
-              >
-                Close
-              </button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4">
+          <div className="relative flex h-full w-full max-w-6xl items-center justify-center">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute right-0 top-0 z-10 rounded-full bg-white/90 p-3 text-gray-700 shadow-lg transition-colors hover:text-black"
+              aria-label="Close full-screen image viewer"
+            >
+              <XMarkIcon className="h-6 w-6" />
+            </button>
+            <div className="max-h-[90vh] w-full overflow-hidden rounded-2xl bg-white shadow-2xl">
+              <img
+                src={bannerImages[activeImageIndex].src}
+                alt={bannerImages[activeImageIndex].alt}
+                className="h-[90vh] w-full object-contain"
+              />
             </div>
           </div>
         </div>
@@ -84,14 +82,47 @@ const BannerSection = ({
         <div className="flex flex-col md:flex-row gap-6">
           {/* Event Image */}
           <div className="md:w-2/5">
-            <div className="h-48 md:h-full rounded-lg overflow-hidden relative bg-gray-200">
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <img 
-                  src="/images/conference/InternationalYogaDay2026.png" 
-                  alt="Conference Image" 
-                  className="w-full h-full object-contain"
-                  loading="lazy"
+            <div
+              className="group relative h-48 cursor-pointer overflow-hidden rounded-lg bg-gray-200 md:h-full"
+              onClick={() => setIsModalOpen(true)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  setIsModalOpen(true);
+                }
+              }}
+            >
+              {bannerImages.map((image, index) => (
+                <img
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`absolute inset-0 h-full w-full object-contain transition-all duration-700 ease-in-out ${
+                    index === activeImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+                  }`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
                 />
+              ))}
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-gradient-to-t from-black/60 to-transparent px-3 py-2 text-white">
+                <span className="text-xs font-medium uppercase tracking-[0.2em]">Tap to view full screen</span>
+                <span className="text-xs font-medium">{activeImageIndex + 1}/{bannerImages.length}</span>
+              </div>
+              <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-2">
+                {bannerImages.map((image, index) => (
+                  <button
+                    key={image.src}
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setActiveImageIndex(index);
+                    }}
+                    className={`h-2.5 w-2.5 rounded-full transition-colors ${
+                      index === activeImageIndex ? 'bg-white' : 'bg-white/50'
+                    }`}
+                    aria-label={`Show banner image ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
           </div>
