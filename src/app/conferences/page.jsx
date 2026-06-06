@@ -8,6 +8,15 @@ import { CalendarIcon, MapPinIcon, ClockIcon, UserIcon, XMarkIcon } from '@heroi
 // Conference data
 const conferences = [
   {
+    id: 2,
+    title: 'International Day of Yoga 2026',
+    description: 'Join us for a transformative experience exploring the ancient wisdom of yoga, sports and its modern applications for holistic well-being.',
+    date: 'June 21, 2026',
+    time: 'All Day',
+    location: 'Holy Faith School, 90 Feet Road, Kachore, Kalyan East',
+    image: '/images/conference/InternationalYogaDay2026.png',
+  },  
+  {
     id: 1,
     title: 'Yoga, Sports and Wellbeing: A Holistic Approach',
     description: 'Join us for a transformative experience exploring the ancient wisdom of yoga, sports and its modern applications for holistic well-being.',
@@ -15,7 +24,7 @@ const conferences = [
     time: 'All Day',
     location: 'Teju Leela Auditorium, Shishuvan School, 426, Shraddhanand Road, King\'s Circle, Matunga Central, Mumbai-400019',
     image: '/images/conference/pexels-bertellifotografia-3321791.jpg',
-  }
+  },
 ];
 
 export default function ConferencesPage() {
@@ -117,7 +126,7 @@ export default function ConferencesPage() {
                 src={conference.image}
                 alt={conference.title}
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -150,7 +159,7 @@ export default function ConferencesPage() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3">
+              {/* <div className="flex gap-3">
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScYVhWJ5s0hwffZE57OALRwqVFOuxxhCRxc5xraTBhe_yqF2Q/viewform"
                   target="_blank"
@@ -165,7 +174,7 @@ export default function ConferencesPage() {
                 >
                   View Details
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}

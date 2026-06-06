@@ -198,10 +198,45 @@ export default function ArticlesPage() {
     },
     {
         id: 28,
-        title: 'How Yoga Helps Young Mind in Indians School Education Systems ',
+        title: 'How Yoga Helps Young Mind in Indians School Education Systems',
         author: 'Mr. Sushil D. Paliwal (India)',
         pdfUrl: '/pdfs/Articles/28.pdf',
         excerpt: 'An analysis of the benefits of yoga for young minds within the Indian school education system, focusing on cognitive, emotional, and physical development.'
+    },
+    {
+        id: 29,
+        title: 'International Day of Yoga and the Practice of Mindfulness in Vietnamese Buddhist Communities',
+        author: 'Ms. Tran Thi Thuy Ha (Vietnam)',
+        pdfUrl: '/pdfs/Articles/29.pdf',
+        excerpt: 'An exploration of how the International Day of Yoga has influenced the practice of mindfulness within Vietnamese Buddhist communities, highlighting cultural adaptations and impacts.'
+    },
+    {
+        id: 30,
+        title: 'International Day of Yoga and the Promotion of Physical and Mental Wellness',
+        author: 'Er. Vinay Savla (India)',
+        pdfUrl: '/pdfs/Articles/30.pdf',
+        excerpt: 'An analysis of the role of the International Day of Yoga in promoting physical and mental wellness, with a focus on its impact in India and globally.'
+    },
+    {
+        id: 31,
+        title: 'A Critical Study of International Day of Yoga and Its Contemporary Importance',
+        author: 'Dr. Nilesh Bansode (India)',
+        pdfUrl: '/pdfs/Articles/31.pdf',
+        excerpt: 'A critical examination of the International Day of Yoga, assessing its significance and relevance in contemporary society, and its impact on global health and wellness initiatives.'
+    },
+    {
+        id: 32,
+        title: 'International Day of Yoga and Its Impact on Global Health Awareness',
+        author: 'Mr. Sushil Singh Paliwal (India)',
+        pdfUrl: '/pdfs/Articles/32.pdf',
+        excerpt: 'An analysis of the International Day of Yoga and its influence on global health awareness, exploring how it has contributed to the promotion of yoga and wellness practices worldwide.'
+    },
+    {
+        id: 33,
+        title: 'International Day of Yoga and Its Influence on the Lifestyle of Common People in India',
+        author: 'Dr. Yadnyeshwar Bagrao (India)',
+        pdfUrl: '/pdfs/Articles/33.pdf',
+        excerpt: 'An analysis of the International Day of Yoga and its influence on the lifestyle of common people in India, focusing on changes in physical activity, mental well-being, and overall quality of life.'
     },
 ];
 

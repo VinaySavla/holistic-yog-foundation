@@ -16,11 +16,11 @@ import {
 
 // Default event data
 const defaultEvent = {
-  title: "Yoga, Sports and Wellbeing: A Holistic Approach",
+  title: "International Day of Yoga 2026",
   description: "Join us for a transformative experience exploring the ancient wisdom of yoga, sports and its modern applications for holistic well-being.",
-  date: "June 28, 2025",
+  date: "June 21, 2026",
   time: "All Day",
-  venue: "Teju Leela Auditorium, Shishuvan School, 426, Shraddhanand Road, King's Circle, Matunga Central, Mumbai-400019"
+  venue: "Holy Faith School, 90 Feet Road, Kachore, Kalyan East"
 };
 
 const BannerSection = ({
@@ -87,9 +87,9 @@ const BannerSection = ({
             <div className="h-48 md:h-full rounded-lg overflow-hidden relative bg-gray-200">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                 <img 
-                  src="/images/conference/pexels-bertellifotografia-3321791.jpg" 
+                  src="/images/conference/InternationalYogaDay2026.png" 
                   alt="Conference Image" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   loading="lazy"
                 />
               </div>
@@ -136,13 +136,13 @@ const BannerSection = ({
                     Register Now
                   </button>
                 </Link> */}
-                <button 
+                {/* <button 
                   onClick={() => setIsModalOpen(true)}
                   className="bg-orange-500 hover:bg-orange-600 text-white flex-1 flex items-center justify-center gap-2 border border-orange-500 font-medium py-2 px-6 rounded-full transition-colors"
                 >
                   <DocumentTextIcon className="w-5 h-5" />
                   View Details
-                </button>
+                </button> */}
               </div>
             </div>            
           </div>

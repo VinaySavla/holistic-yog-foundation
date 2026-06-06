@@ -119,6 +119,14 @@ const lifetimeMembers = [
     qualification:'B.Com, M.Com, M.M.S, M.B.A., Diploma in Business Management, Ph.D. (Management)',
     achievementsPdf: '/pdfs/DrAnilSureshTiwari.pdf',
   },
+  {
+    id: '15',
+    name: 'Mr. Shesh Kumar Upadhyay',
+    membershipNumber: 'HYF/LM/015',
+    image: '/images/lifetime-members/MrSheshKumarUpadhyay.jpg',
+    qualification:'Telecom & IT Professional | Founder & Director, Insys Technologies Pvt. Ltd.',
+    achievementsPdf: '/pdfs/MrSheshKumarUpadhyay.pdf',
+  },
   // Add more lifetime members as needed
 ];
 
