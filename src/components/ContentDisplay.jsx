@@ -10,6 +10,7 @@ import BannerSection from './sections/BannerSection';
 import InstructorsSection from './sections/InstructorsSection';
 import WhyUsSection from './sections/WhyUsSection';
 import MembershipSection from './sections/MembershipSection';
+import { ENABLE_UPCOMING_SECTION } from '@/contexts/SectionContext';
 
 // Define section types as string constants
 export const SECTION_TYPES = {
@@ -51,7 +52,7 @@ const ContentDisplay = ({ activeSection = 'home' }) => {
       {isSectionVisible('about') && <AboutUsSection />}
       {isSectionVisible('services') && <ServicesSection />}
       {isSectionVisible('courses') && <CoursesSection />}
-      {isSectionVisible('banner') && <BannerSection />}
+      {ENABLE_UPCOMING_SECTION && isSectionVisible('banner') && <BannerSection />}
       {isSectionVisible('instructors') && <InstructorsSection />}
       {isSectionVisible('why-us') && <WhyUsSection />}
       {isSectionVisible('membership') && <MembershipSection />}

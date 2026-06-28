@@ -2,7 +2,10 @@
 
 import React, { useEffect } from 'react';
 
-import { useSectionContext } from '@/contexts/SectionContext';
+import {
+  ENABLE_UPCOMING_SECTION,
+  useSectionContext,
+} from '@/contexts/SectionContext';
 import HeadingSection from '@/components/sections/HeadingSection';
 import ImagesSection from '@/components/sections/ImagesSection';
 import AboutUsSection from '@/components/sections/AboutUsSection';
@@ -31,7 +34,7 @@ export default function Home() {
       </div>
       
       {/* Display remaining sections */}
-      <BannerSection />
+      {ENABLE_UPCOMING_SECTION && <BannerSection />}
       <AboutUsSection />
       <ServicesSection />
       <WhyUsSection />

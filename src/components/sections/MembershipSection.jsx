@@ -1,95 +1,153 @@
 "use client";
 
-import React from 'react';
-import { CreditCardIcon } from '@heroicons/react/24/outline';
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import {
+  CreditCardIcon,
+  MagnifyingGlassPlusIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
 
-// Default plan data
-const defaultPlan = {
-  id: '1',
-  title: 'Life-Time Membership',
-  price: '₹5,000',
-  duration: 'one-time',
-  features: [
-    'Unlimited access to all yoga classes',
-    'Access to guided meditation & mindfulness programs',
-    'Priority booking for special events',
-    '20% discount on workshops and retreats'
-  ],
-  isPopular: true
-};
+const defaultPlans = [
+  {
+    id: 'annual',
+    title: 'Annual Membership',
+    image: '/images/membership/AnnualMemberBenefits.jpeg',
+    alt: 'Benefits and fee structure for Annual Membership',
+    indianPrice: '₹1,100',
+    internationalPrice: 'USD 50',
+    duration: 'per year',
+    badge: 'Renewed yearly',
+  },
+  {
+    id: 'life',
+    title: 'Life Membership',
+    image: '/images/membership/LifeMemberBenefits.jpeg',
+    alt: 'Benefits and fee structure for Life Membership',
+    indianPrice: '₹5,000',
+    internationalPrice: 'USD 150',
+    duration: 'one-time payment',
+    badge: 'Lifelong affiliation',
+  },
+];
 
 const MembershipSection = ({
-  title = "Membership",
-  description = "Join our community and transform your life with our holistic approach to wellness.",
-  plan = defaultPlan
+  title = 'Choose Your Membership',
+  description = 'Become part of a community devoted to yoga, holistic health, personal growth, and the universal values of yoga.',
+  plans = defaultPlans,
 }) => {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  useEffect(() => {
+    if (!selectedPlan) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setSelectedPlan(null);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedPlan]);
+
   return (
-    <div className="bg-[#fdf7f2] rounded-lg p-8">
-      <div className="flex flex-col md:flex-row items-center gap-8">
-        {/* Left side - Text, Price, and Button */}
-        <div className="md:w-1/2 space-y-6">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold text-gray-800 flex items-center">
-              <CreditCardIcon className="w-6 h-6 text-blue-500 mr-2" />
-              {plan.title}
-            </h2>
-            <div className="flex items-baseline">
-              <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-              {/* <span className="text-xl text-gray-600 ml-2"> {plan.duration} purchase</span> */}
-            </div>
-          </div>
-          
-          <div className="pt-4">
-            <a 
-              href="/membershipform" 
-              className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 text-lg"
+    <section className="rounded-2xl bg-[#fdf7f2] px-4 py-8 sm:px-8 sm:py-10">
+      {selectedPlan && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-3 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedPlan.title} benefits`}
+          onClick={() => setSelectedPlan(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedPlan(null)}
+            className="absolute right-4 top-4 z-10 rounded-full bg-white p-2.5 text-gray-800 shadow-lg transition hover:bg-orange-50 sm:right-6 sm:top-6"
+            aria-label="Close membership details"
+          >
+            <XMarkIcon className="h-6 w-6" />
+          </button>
+
+          <img
+            src={selectedPlan.image}
+            alt={selectedPlan.alt}
+            className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
+
+      <div className="mx-auto mb-8 max-w-3xl text-center">
+        <div className="mb-3 flex items-center justify-center gap-2">
+          <CreditCardIcon className="h-7 w-7 text-orange-500" />
+          <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl">{title}</h2>
+        </div>
+        <p className="text-sm leading-6 text-gray-600 sm:text-base">{description}</p>
+      </div>
+
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
+        {plans.map((plan) => (
+          <article
+            key={plan.id}
+            className="overflow-hidden rounded-2xl border border-orange-100 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedPlan(plan)}
+              className="group relative block w-full overflow-hidden bg-[#f8f4ed] text-left"
+              aria-label={`View full ${plan.title} benefits`}
             >
-              Get Membership
-            </a>
-          </div>
-        </div>
-        
-        {/* Right side - Image */}
-        <div className="md:w-1/2">
-          <div className="relative h-64 w-full rounded-lg overflow-hidden">
-            <div className="absolute inset-0 bg-gray-200">
-              <img 
-                src="/images/join us.jpg" 
-                alt="Yoga membership" 
-                className="w-full h-full object-cover"
+              <img
+                src={plan.image}
+                alt={plan.alt}
+                className="aspect-[2/3] w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
                 loading="lazy"
-                width="600"
-                height="400"
-                onError={(e) => {
-                  const target = e.target;
-                  target.onerror = null;
-                  target.src = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%20800%20600%22%3E%3Crect%20fill%3D%22%23f0f0f0%22%20width%3D%22800%22%20height%3D%22600%22%2F%3E%3Ctext%20fill%3D%22%23999%22%20font-family%3D%22Arial%2C%20sans-serif%22%20font-size%3D%2236%22%20x%3D%22400%22%20y%3D%22300%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22%3EYoga%20Class%20Image%3C%2Ftext%3E%3C%2Fsvg%3E';
-                }}
               />
+              <span className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-4 pb-4 pt-14 text-sm font-semibold text-white">
+                <MagnifyingGlassPlusIcon className="h-5 w-5" />
+                View all benefits
+              </span>
+            </button>
+
+            <div className="p-5 sm:p-6">
+              <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
+                <div>
+                  <h3 className="text-xl font-bold text-[#0a438b]">{plan.title}</h3>
+                  <p className="mt-1 text-sm font-medium text-orange-600">{plan.badge}</p>
+                </div>
+                <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#0a438b]">
+                  {plan.duration}
+                </span>
+              </div>
+
+              <div className="mb-5 grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-orange-50 p-3">
+                  <p className="text-xs font-medium text-gray-500">Indian applicants</p>
+                  <p className="mt-1 text-lg font-bold text-gray-900">{plan.indianPrice}</p>
+                </div>
+                <div className="rounded-xl bg-blue-50 p-3">
+                  <p className="text-xs font-medium text-gray-500">International</p>
+                  <p className="mt-1 text-lg font-bold text-gray-900">{plan.internationalPrice}</p>
+                </div>
+              </div>
+
+              <Link
+                href="/membershipform"
+                className="block w-full rounded-full bg-orange-500 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+              >
+                Apply for {plan.title}
+              </Link>
             </div>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
-      
-      {/* Commented out What's included section
-      <div className="relative mt-8">
-        <div className="bg-[#d3ebff] rounded-xl p-6">
-          <div className="text-center mb-6">
-            <h3 className="font-semibold text-lg text-black">What's included:</h3>
-          </div>
-          
-          <ul className="space-y-4 max-w-md mx-auto">
-            {plan.features.map((feature, index) => (
-              <li key={index} className="flex items-start">
-                <span className="text-blue-500 mr-3 ml-2">•</span>
-                <span className="text-gray-700 text-sm">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      */}
-    </div>
+    </section>
   );
 };
 

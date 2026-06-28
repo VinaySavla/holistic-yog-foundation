@@ -2,6 +2,9 @@
 
 import React, { createContext, useContext, useState } from 'react';
 
+// Temporary feature flag for the Upcoming section.
+export const ENABLE_UPCOMING_SECTION = false;
+
 // Define SectionType as a JavaScript object instead of TypeScript enum
 const SectionTypes = {
   home: 'home',
